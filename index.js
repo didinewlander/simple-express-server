@@ -10,7 +10,7 @@ app.use(express.json());
 const changePoweredBy = (req, res, next) => {
   const power = res.getHeader("x-powered-by");
   if (power === "Express") {
-    res.setHeader("x-powered-by", "My Docker Image");
+    res.setHeader("x-powered-by", process.env.ENV_TYPE);
   }
   next();
 };
