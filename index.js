@@ -31,6 +31,18 @@ app.use("/", (req, res) => {
   res.json(response);
 });
 
+app.use("/cloud", (req,res)=>{
+    const response = {
+        status: 200,
+        message: "Welcome to the Cloud API",
+        data: {
+            url: req.url,
+            "x-powered-by": process.env.ENV_TYPE,
+        },
+    };
+    res.json(response);
+})
+
 app.listen(process.env.PORT || 3000, () =>
   console.log("Listening on port: " + process.env.PORT)
 );
